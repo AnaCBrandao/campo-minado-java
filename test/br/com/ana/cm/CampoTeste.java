@@ -1,5 +1,6 @@
 package br.com.ana.cm;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,11 +19,30 @@ class CampoTeste {
 	
 	@Test
 	void testeVizinhoRealDistancia1() {
-		Campo vizinho = new Campo(3, 4);
+		Campo vizinho = new Campo(3, 2);
+		
+		boolean resultado = campo.adicionarVizinho(vizinho);
+		
+		assertTrue(resultado);
+	}
+	
+	@Test
+	void testeVizinhoRealDistancia2() {
+		Campo vizinho = new Campo(2, 2);
 		
 		boolean resultado = campo.adicionarVizinho(vizinho);
 		
 		assertTrue(resultado);
 	}
 
+	@Test
+	void testeMarcacao() {
+		assertFalse(campo.isMarcado());
+	}
+	
+	@Test
+	void testeAlternarMarcacao() {
+		campo.alternarMarcacao();
+		assertTrue(campo.isMarcado());
+	}
 }
